@@ -147,7 +147,7 @@ pipeline {
             }
 
             failure {
-                slackSend (channel: '#backend-jenkins', color: '#FFFF00', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+            slackSend (channel: '#backend-jenkins', color: '#FFFF00', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
             }
           }
         }
