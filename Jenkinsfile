@@ -61,19 +61,12 @@ pipeline {
               // failed, record the test results and archive the jar file.
               success {
                   echo 'Successfully Cloned Repository'
-
-                  mail  to: 'lucas@rainbow.co.kr',
-                        subject: "Deploy Frontend Success",
-                        body: "Successfully deployed frontend!"
-
+                  slackSend (channel: '#backend-jenkins', color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
               }
 
               failure {
                   echo 'I failed :('
-
-                  mail  to: 'lucas@rainbow.co.kr',
-                        subject: "Failed Pipelinee",
-                        body: "Something is wrong with deploy frontend"
+                  slackSend (channel: '#backend-jenkins', color: '#FFFF00', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
               }
           }
         }
@@ -149,10 +142,12 @@ pipeline {
 
           post {
             success {
-              mail  to: 'lucas@rainbow.co.kr',
-                    subject: "Deploy Success",
-                    body: "Successfully deployed!"
-                  
+                echo 'Successfully'
+                slackSend (channel: '#backend-jenkins', color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+            }
+
+            failure {
+                slackSend (channel: '#backend-jenkins', color: '#FFFF00', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
             }
           }
         }
