@@ -109,12 +109,12 @@ pipeline {
           post {
               success {
                   echo 'Successfully Tested Backend'
-                  slackSend (channel: '#backend-jenkins', color: '#4caf50', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                  slackSend (channel: '#backend-jenkins', color: '#4caf50', message: "SUCCESS: TEST '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
               }
 
               failure {
                   echo 'I failed :('
-                  slackSend (channel: '#backend-jenkins', color: '#ff1744', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                  slackSend (channel: '#backend-jenkins', color: '#ff1744', message: "FAILED: TEST '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
               }
           }
         }
@@ -154,11 +154,11 @@ pipeline {
           post {
             success {
                 echo 'Successfully'
-                slackSend (channel: '#backend-jenkins', color: '#4caf50', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                slackSend (channel: '#backend-jenkins', color: '#4caf50', message: "SUCCESS: Deploy '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
             }
 
             failure {
-            slackSend (channel: '#backend-jenkins', color: '#ff1744', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+            slackSend (channel: '#backend-jenkins', color: '#ff1744', message: "FAILED: Deploy '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
             }
           }
         }
