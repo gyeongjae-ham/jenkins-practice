@@ -1,14 +1,7 @@
-# Lecture
+# Jenkins practice
 
-## Website
-
-```sh
-```
-
-## Server
-
-```sh
-npm init
-npm install -D typescript
-npm i -S express jest
-```
+## 실패하는 구간 log 찍어서 해결하기
+- 환경 변수 문제 등 찾아서 해결함
+- 왜 빌드 과정이 엄청 느린건지 모르겠음
+  - 구글링 해서 얻은 의심점은 docker image build 과정에서 내가 프리티어 EC2를 사용하고 있는데 cache가 너무 쌓인게 아닌가 싶음
+  - 확인해서 우선 제거해보고 속도 체크해보려 함
